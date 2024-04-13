@@ -82,13 +82,13 @@ const categories1 = [
 ];
 
 const tree1 = makeTree(categories1, null);
-{
-  animals: {
-    mammals: {}
-  }
-}
+// {
+//   animals: {
+//     mammals: {}
+//   }
+// }
 
-
+console.log(tree1)
 
 
 
