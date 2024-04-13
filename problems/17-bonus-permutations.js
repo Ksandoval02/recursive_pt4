@@ -8,16 +8,31 @@ different permutations.
 
 Examples:
 
-permutations([1, 2]) // [[1, 2], [2, 1]]
-permutations([1, 2, 3]) // [[1, 2, 3], [1, 3, 2],
-                        // [2, 1, 3], [2, 3, 1],
-                        // [3, 1, 2], [3, 2, 1]]
+
 ***********************************************************************/
 
 const permutations = (array) => {
-  // Your code here 
+  if(array.length === 1){
+    return [array]
+  }
+  let result = []
+  for (let element of array) {
+  const remain = array.filter(item => item !== element)
+  const numPremutation = permutations(remain)
+  // permutations.map(remain, numPremutation)
+  const eachRemain = numPremutation.map((numPremutation) => [element, ...numPremutation])
+  result = result.concat(eachRemain)
+  }
+  return result
 };
 
+
+
+
+console.log(permutations([1, 2])) // [[1, 2], [2, 1]]
+console.log(permutations([1, 2, 3])) // [[1, 2, 3], [1, 3, 2],
+                        // [2, 1, 3], [2, 3, 1],
+                        // [3, 1, 2], [3, 2, 1]]
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
   module.exports = permutations;
