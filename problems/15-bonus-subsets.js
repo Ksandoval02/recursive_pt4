@@ -15,15 +15,15 @@ const subsets = (arr) => {
   }
   const element1 = arr[0]
   let subsets1 = arr.slice(1)
-  let subsets2 = subsets1.map(subsets => [element1, subsets])
-  return subsets1.concat(subsets2)
+  let subsets2 = subsets(subsets1).map(subsets1 => [element1, ...subsets1])
+  return subsets(subsets1).concat(subsets2)
 
 }
-
-subsets([]) // [[]]
+debugger
+subsets([])// [[]]
 subsets([1]) // [[], [1]]
-subsets([1, 2]) // [[], [1], [2], [1, 2]]
-console.log(subsets([1, 2, 3])) // [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
+subsets([1, 2])// [[], [1], [2], [1, 2]]
+subsets([1, 2, 3]) // [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
   module.exports = subsets;
