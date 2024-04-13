@@ -7,15 +7,6 @@ should default to using pennies (1 cent), nickels (5 cents), dimes (10 cents),
 and quarters (25 cents). Return `null` if there are no possible ways to make
 change for the given target amount.
 
-Examples:
-
-makeChange(21); // [1, 10, 10]
-makeChange(75); // [25, 25, 25]
-makeChange(33, [15, 3]); // [3, 15, 15]
-makeChange(34, [15, 3]); // null
-makeChange(24, [10, 7, 1]) // [7, 7, 10]
-
-Here's a game plan for solving the problem:
 
 First, write a 'greedy' version called `greedyMakeChange`:
 
@@ -35,9 +26,6 @@ each time we get a new remainder. By iterating over the denominations and
 continuing to search for the best change, we assure that we test for
 'non-greedy' uses of each denomination.
 
-Discuss the following game plan and then work together to implement your
-new method:
-
 - Iterate over each coin.
 - Grab only one of that one coin and recursively call `makeBetterChange` on the
   remainder using coins less than or equal to the current coin.
@@ -54,11 +42,39 @@ permutations without storing them in an array. Then go back and refactor your
 solution so that it only calculates and compares all of the different
 combinations.
 ***********************************************************************/
+function greedyMakeChange(amount, coins = [1, 5, 10, 25]){
+  coins.sort((a, b) => a - b)
+  let isArray = []
+  for (let amounts of coins){
+    if (amount >= coins){
+       isArray.push(amounts)
+       
+    }
+  }
+  if (isArray.length > 0){
+    return isArray
+    }else{
+      return null
+    }
+  }
+debugger
+greedyMakeChange(75)
 
-function makeBetterChange(target, coins = [25, 10, 5, 1]) {
-  // Your code here 
-}
 
+
+
+// function makeBetterChange(target, coins = [25, 10, 5, 1]) {
+
+// }
+
+
+
+
+// makeChange(21); // [1, 10, 10]
+// makeChange(75); // [25, 25, 25]
+// makeChange(33, [15, 3]); // [3, 15, 15]
+// makeChange(34, [15, 3]); // null
+// makeChange(24, [10, 7, 1]) // [7, 7, 10]
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
